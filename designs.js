@@ -57,6 +57,7 @@ $(document).ready(function () {
   $('#pixel_canvas').on("mouseleave",function() {
     if(cflag)
       mflag=false;
+    sflag=false;
   });
 
   $('#pixel_canvas').on("mousedown","td", function() {
