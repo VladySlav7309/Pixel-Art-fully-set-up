@@ -11,31 +11,35 @@
     <link rel="stylesheet" href="farbtastic.css" type="text/css" />
 </head>
 <body>
-  <div class ="flex-container">
-    <div class="options">
-      <h2>Pick A Color</h2>
-      <form><input type="text" id="color" name="color" value="#123456"/>
-      </form>
-      <div id="colorpicker"></div>
-      <h2>Choose Grid Size</h2>
-      <form id="sizePicker">
-          Grid H:  <input type="number" id="input_height" name="height" min="1" value="10">
-          <br>
-          Grid W:    <input type="number" id="input_width" name="width" min="1" value="10">
-          <br>
-          Cell P: <input type="number" id="input_cell" name="width" min="20" value="20">
-      </form>
-      <p class="myP" data-text="Make a Grid!"></p>
-
+    <div class ="flex-container">
+        <div class="options">
+            <h2>Pick A Color</h2>
+            <form><input type="text" id="color" name="color" value="#123456"/>
+            </form>
+            <div id="colorpicker"></div>
+            <h2>Choose Grid Size</h2>
+            <div class="flex-choose-content">
+                <form id="sizePicker">
+                    Grid H:  <input type="number" id="input_height" name="height" min="1" value="10">
+                    <br>
+                    Grid W:    <input type="number" id="input_width" name="width" min="1" value="10">
+                    <br>
+                    Cell P: <input type="number" id="input_cell" name="width" min="20" value="20">
+                </form>
+                <!---
+                <div class="preset">
+                    <button id="rect"> Rect  16:9</button>
+                    <button id="sqre"> Square 1:1</button>
+                    <button id="rnd"> Round 3.14</button>
+                </div>--->
+            </div>
+            <p class="myP" data-text="Make a Grid!"></p>
+        </div>
+        <div class="content">
+            <p class="text"> </p>
+            <table id="pixel_canvas"></table>
+            <script src="designs.js"></script>
+        </div>
     </div>
-
-    <div class="content">
-
-        <p class="text"> </p>
-        <table id="pixel_canvas"></table>
-        <script src="designs.js"></script>
-    </div>
-
-  </div>
 </body>
 </html>
