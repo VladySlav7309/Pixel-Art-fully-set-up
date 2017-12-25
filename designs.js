@@ -33,7 +33,7 @@ $(document).ready(function () {
       height=$('#input_height').val();
       $('#input_height').prop("value", height);
   });
-
+  $('body').css('heigth',$(window).height());
   $('#input_cell').change(function() {
       cellSize=$('#input_cell').val();
       $('#input_cell').prop("value", cellSize);
@@ -45,15 +45,19 @@ $(document).ready(function () {
   });
   $("body").keydown(function(event){
     if((event.keyCode == 13)||(event.keyCode==27))
-      $(".options").slideToggle( 750 );
+      $(".options").slideToggle(750);
   });
   //Event listener for Make Grid button
   $('.myP').click(function() {
       $(".options").slideToggle(750);
-      setTimeout(function() {makeGrid()},1000);
+      setTimeout(function() {checkSize()},1000);
+  });
+    //Mouse effect system start
+  $('#pixel_canvas').on("mouseleave",function() {
+    if(cflag)
+      mflag=false;
   });
 
-  //Mouse effect system start
   $('#pixel_canvas').on("mousedown","td", function() {
       if(cflag) {
           $(this).css("background-color", color);
@@ -64,7 +68,7 @@ $(document).ready(function () {
       mflag=true;
   });
   $('#pixel_canvas').on("mouseup","td", function() {
-      if(cflag) {
+      if(cflag && mflag) {
           $(this).css("background-color", color);
       }
       else {
@@ -95,7 +99,17 @@ $(document).ready(function () {
           cflag=true;
       }
   });
-
+  function checkSize() {
+      if((height*cellSize)>(0.8*$(window).height())) {
+          height=parseInt(0.8*$(window).height()/cellSize);
+          $('#input_height').prop("value", height);
+      }
+      if((width*cellSize)>$(window).width()) {
+          width=parseInt($(window).width()/cellSize);
+          $('#input_width').prop("value", width);
+      }
+    makeGrid();
+  }
   //Main function that draws a grid
   function makeGrid() {
     //Sets previous content to null
