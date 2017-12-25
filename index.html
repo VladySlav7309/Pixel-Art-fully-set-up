@@ -20,25 +20,46 @@
             <h2>Choose Grid Size</h2>
             <div class="flex-choose-content">
                 <form id="sizePicker">
-                    Grid H:  <input type="number" id="input_height" name="height" min="1" value="10">
+                    Grid H:  <input type="number" id="input_height" name="height" min="1" value="9">
                     <br>
-                    Grid W:    <input type="number" id="input_width" name="width" min="1" value="10">
+                    Grid W:    <input type="number" id="input_width" name="width" min="1" value="16">
                     <br>
-                    Cell P: <input type="number" id="input_cell" name="width" min="20" value="20">
+                    Cell P: <input type="number" id="input_cell" name="width" min="20" value="40">
                 </form>
-                <!---
-                <div class="preset">
-                    <button id="rect"> Rect  16:9</button>
-                    <button id="sqre"> Square 1:1</button>
-                    <button id="rnd"> Round 3.14</button>
-                </div>--->
             </div>
-            <p class="myP" data-text="Make a Grid!"></p>
+            <p class="myP button" data-text="Make a Grid!"></p>
         </div>
         <div class="content">
             <p class="text"> </p>
             <table id="pixel_canvas"></table>
             <script src="designs.js"></script>
+        </div>
+        <div class="hint">
+          <h3> Useful Hints</h3>
+          <p>
+              You can use
+              <br>
+                  <button class="enter button">Enter</button>
+                  or <button class="escape button">Escape</button>
+              <br>
+                  to enter/exit
+              <br>
+                  fullscreen mode
+          </p>
+          <p>
+              Use <button class="button">Control</button>
+              <br>
+                  to erase the
+              <br>
+                  background color
+          </p>
+          <p>
+              Use <button class="button">Shift</button>
+              <br>
+                  to get color
+              <br>
+                  of the cell
+          </p>
         </div>
     </div>
 </body>

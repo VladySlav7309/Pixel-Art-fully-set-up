@@ -8,8 +8,10 @@ $(document).ready(function () {
   //For mouse effects only
   //Checks if mouse button is pushed
   var mflag =false;
-  //Checks if control is pushed
+  //Checks if not control is pushed
   var cflag=true;
+  //Checks if shift is pushed
+  var sflag=false;
   //Cell width and height
   var cellSize=$('#input_cell').val();
   //Farbtastic colorpicker
@@ -49,7 +51,6 @@ $(document).ready(function () {
   });
   //Event listener for Make Grid button
   $('.myP').click(function() {
-      $(".options").slideToggle(750);
       setTimeout(function() {checkSize()},1000);
   });
     //Mouse effect system start
@@ -59,25 +60,34 @@ $(document).ready(function () {
   });
 
   $('#pixel_canvas').on("mousedown","td", function() {
-      if(cflag) {
-          $(this).css("background-color", color);
+      if(sflag) {
+        $('#color').prop("value",$(this).css("background-color"));
+        color=$(this).css("background-color");
       }
       else {
-          $(this).css("background-color", "#fee6e6");
+      if(cflag) {
+            $(this).css("background-color", color);
+        }
+        else {
+            $(this).css("background-color", "#fee6e6");
+        }
       }
       mflag=true;
   });
   $('#pixel_canvas').on("mouseup","td", function() {
-      if(cflag && mflag) {
-          $(this).css("background-color", color);
-      }
-      else {
-          $(this).css("background-color", "#fee6e6");
-      }
-      mflag=false;
+    if(!sflag){
+        if(cflag && mflag) {
+            $(this).css("background-color", color);
+        }
+        else {
+            $(this).css("background-color", "#fee6e6");
+        }
+    }
+    mflag=false;
+
   });
   $('.content').on("mouseenter",'td', function() {
-      if(mflag && cflag) {
+      if(mflag && cflag && !sflag) {
           $(this).css("background-color", color);
       }
       if(!cflag && mflag) {
@@ -92,13 +102,21 @@ $(document).ready(function () {
           $('body').addClass("cursor");
           cflag=false;
       }
+      //Get a color back
+      if(event.keyCode==16) {
+          sflag=true;
+      }
   });
   $('body').keyup(function(event) {
       if(event.keyCode==17) {
           $('body').removeClass("cursor");
           cflag=true;
       }
+      if(event.keyCode==16) {
+          sflag=false;
+      }
   });
+
   function checkSize() {
       if((height*cellSize)>(0.8*$(window).height())) {
           height=parseInt(0.8*$(window).height()/cellSize);
