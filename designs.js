@@ -46,7 +46,6 @@ $(document).ready(function () {
   $("body").keydown(function(event){
     if((event.keyCode == 13)||(event.keyCode==27))
       $(".options").slideToggle( 750 );
-      setTimeout(function() {makeGrid()},1000);
   });
   //Event listener for Make Grid button
   $('.myP').click(function() {
