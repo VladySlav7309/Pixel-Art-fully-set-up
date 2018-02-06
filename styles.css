@@ -55,23 +55,6 @@ h2:first-of-type {
     align-items:baseline;
     align-items :center;
 }
-/*
-#sizePicker {
-  flex-basis:45%;
-}
-.preset {
-  flex-basis:45%;
-}
- Still in progress
-#rect {
-   width:96px;
-   height:54px;
-}
-#sqre {
-  width:54px;
-  height:54px;
-}
- */
 #colorPicker {
   margin:auto;
 }
